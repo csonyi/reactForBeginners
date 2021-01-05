@@ -1,4 +1,5 @@
 import React from 'react'
+import base from '../base'
 
 import Header from './Header'
 import Order from './Order'
@@ -8,12 +9,15 @@ import Fish from './Fish'
 import sampleFishes from '../sample-fishes'
 
 
+
 class App extends React.Component {
+    // State
     state = {
         fishes: {},
         order: {}
     }
 
+    // Methods
     addFish = (fish) => {
         const fishes = {...this.state.fishes}
 
@@ -34,6 +38,20 @@ class App extends React.Component {
         const order = {...this.state.order}
         order[key] = order[key] + 1 || 1
         this.setState({order})
+    }
+
+    // Lifecycle methods
+    componentDidMount() {
+        const { params } = this.props.match
+        this.ref = base.syncState(`${params.storeId}/fishes`, {
+            context: this,
+            state: 'fishes'
+        })
+    }
+
+    componentWillUnmount() {
+        console.log(this.ref);
+        base.removeBinding(this.ref)
     }
 
     render() {
