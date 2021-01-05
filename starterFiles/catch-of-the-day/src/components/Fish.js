@@ -10,6 +10,9 @@ class Fish extends React.Component {
             desc,
             status
         } = this.props.details
+        const index = this.props.index
+
+        const isAvailable = status === 'available'
 
         return (
             <li className="menu-fish">
@@ -19,7 +22,7 @@ class Fish extends React.Component {
                     <span className="price">{formatPrice(price)}</span>
                 </h3>
                 <p>{desc}</p>
-                <button>Add to Cart</button>
+                <button disabled={!isAvailable} onClick={() => this.props.addToOrder(index)}>{(isAvailable) ? 'Add to Cart' : 'Sold Out!'}</button>
             </li>
         )
     }
