@@ -4,3 +4,4 @@ node_modules/
 .idea
 notes.md
 starterFiles/catch-of-the-day/build/
+*.bak
