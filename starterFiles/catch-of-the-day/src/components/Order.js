@@ -47,7 +47,7 @@ class Order extends React.Component {
                 </CSSTransition>
               </TransitionGroup>
               lbs {fish.name}
-              {formatPrice(count * fish.price)}
+              <span className="price">{formatPrice(count * fish.price)}</span>
               <button onClick={() => this.props.deleteFromOrder(key)}>
                 &times;
               </button>

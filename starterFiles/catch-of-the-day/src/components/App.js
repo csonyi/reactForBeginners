@@ -103,6 +103,7 @@ class App extends React.Component {
           deleteFromOrder={this.deleteFromOrder}
         />
         <Inventory
+          storeId={this.props.match.params.storeId}
           fishes={this.state.fishes}
           loadSampleFishes={this.loadSampleFishes}
           addFish={this.addFish}
